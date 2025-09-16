@@ -1,0 +1,12 @@
+<section class="countries-list">
+  <h2>Countries List</h2>
+
+  <ol>
+    <li *ngFor="let c of countries">
+      <a [routerLink]="['/countries', c.countryId, 'languages']">
+        <strong>{{ c.name }}</strong>
+      </a>
+      | Area: {{ c.area | number }} | Code: {{ c.countryCode2 }}
+    </li>
+  </ol>
+</section>

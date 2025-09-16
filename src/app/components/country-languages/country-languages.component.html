@@ -1,0 +1,11 @@
+<section class="languages">
+  <h2>Languages for Country ID {{ countryId }}</h2>
+
+  <ul>
+    <li *ngFor="let l of languages">{{ l.language }}</li>
+  </ul>
+
+  <p *ngIf="languages?.length === 0">
+    No languages found.
+  </p>
+</section>

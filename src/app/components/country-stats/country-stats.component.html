@@ -1,0 +1,56 @@
+<section class="country-stats">
+  <h2>Country Stats</h2>
+
+  <form (ngSubmit)="applyFilters()" class="filters">
+    <label>
+      Region:
+      <select [(ngModel)]="selectedRegionId" name="regionId">
+        <option [ngValue]="null">All</option>
+        <option *ngFor="let r of regions" [ngValue]="r.regionId">{{ r.name }}</option>
+      </select>
+    </label>
+
+    <label>
+      Year From:
+      <input type="number" [(ngModel)]="yearFrom" name="yearFrom" />
+    </label>
+
+    <label>
+      Year To:
+      <input type="number" [(ngModel)]="yearTo" name="yearTo" />
+    </label>
+
+    <button type="submit">Apply</button>
+  </form>
+
+  <table *ngIf="stats.length > 0" class="stats-table">
+    <thead>
+      <tr>
+        <th>Continent</th>
+        <th>Region</th>
+        <th>Country</th>
+        <th>Year</th>
+        <th>Population</th>
+        <th>GDP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of stats">
+        <td>{{ s.continentName }}</td>
+        <td>{{ s.regionName }}</td>
+        <td>{{ s.countryName }}</td>
+        <td>{{ s.year }}</td>
+        <td>{{ s.population | number }}</td>
+        <td>{{ s.gdp | number }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="stats.length === 0">No data found.</p>
+
+  <div class="pagination" *ngIf="stats">
+    <button (click)="prevPage()" [disabled]="page === 0">Previous</button>
+    <span>Page {{ page + 1 }}</span>
+    <button (click)="nextPage()" [disabled]="(page + 1) * size >= total">Next</button>
+  </div>
+</section>

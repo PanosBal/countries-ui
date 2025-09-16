@@ -1,0 +1,26 @@
+<section class="max-gdp-ratio">
+  <h2>Max GDP / Population Ratio by Country</h2>
+
+  <table *ngIf="records.length > 0" class="stats-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Country Code 3</th>
+        <th>Year</th>
+        <th>Population</th>
+        <th>GDP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of records">
+        <td>{{ r.name }}</td>
+        <td>{{ r.countryCode3 }}</td>
+        <td>{{ r.year }}</td>
+        <td>{{ r.population | number }}</td>
+        <td>{{ r.gdp | number }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="records.length === 0">No data found.</p>
+</section>
